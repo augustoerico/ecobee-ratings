@@ -2,6 +2,7 @@ plugins {
     id 'groovy'
     id 'java'
     id 'jacoco'
+    id 'application'
 }
 
 group 'org.example'
@@ -20,4 +21,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+ext {
+    javaMainClass = "io.github.augustoerico.Main"
+}
+
+application {
+    mainClassName = javaMainClass
 }
