@@ -11,17 +11,12 @@ import io.github.augustoerico.services.repositories.CustomersRepository
 
 class Main {
     static void main(String... args) {
-        def input =
-                '''"John Doe" "Canada/Ontario/Toronto" 1.5
-"Samanta Smith" "Canada/Ontario/London" 3.7
-"Adam Xin" "Canada/British Columbia/Vancouver" 2.110
-"Monica Taylor" "Canada/Ontario/Toronto" 2.110
-"Alicia Yazzie" "US/Arizona/Phoenix" 5.532
-"Mohammed Zadeh" "Canada/Ontario/Toronto" 1.43
+        if (!args.size()) {
+            def message = '[`--args` missing] > Check README.md'
+            throw new RuntimeException(message)
+        }
 
-"John Doe" "Canada"
-"John Doe" "Canada/Ontario"
-"Alicia Yazzie" "US/Arizona"'''
+        def input = new File(args[0]).text
 
         def customersSvc = new CustomersSvc(
                 new CustomersRepository()
