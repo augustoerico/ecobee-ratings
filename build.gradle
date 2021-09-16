@@ -1,15 +1,25 @@
 plugins {
     id 'groovy'
-    id 'java'
-    id 'jacoco'
     id 'application'
 }
 
-group 'org.example'
+group 'io.github.augustoerico'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'io.github.augustoerico.Main'
+        )
+    }
+}
+
+run {
+    standardInput = System.in
 }
 
 dependencies {
@@ -23,10 +33,6 @@ test {
     useJUnitPlatform()
 }
 
-ext {
-    javaMainClass = "io.github.augustoerico.Main"
-}
-
 application {
-    mainClassName = javaMainClass
+    mainClassName = 'io.github.augustoerico.Main'
 }
